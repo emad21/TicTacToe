@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+<<<<<<< HEAD
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.TextView;
@@ -30,6 +31,11 @@ public class MainActivity extends AppCompatActivity {
     private boolean humanFirst = false;
     private boolean compFirst = false;
     private boolean tGameOver = false;
+=======
+
+
+public class MainActivity extends AppCompatActivity {
+>>>>>>> 2de25a7... Added button to start game,text view and option to choose between players
 
 
    
@@ -37,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+<<<<<<< HEAD
           tboardButtons = new Button[board_size];
         tboardButtons[0] = (Button) findViewById(R.id.a1);
         tboardButtons[1] = (Button) findViewById(R.id.a2);
@@ -139,6 +146,12 @@ public class MainActivity extends AppCompatActivity {
 }
 
 
+=======
+
+       
+    }
+
+>>>>>>> 2de25a7... Added button to start game,text view and option to choose between players
 
   
 

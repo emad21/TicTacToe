@@ -1,11 +1,15 @@
 package com.example.emad.myapplication;
+<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+=======
+>>>>>>> 2de25a7... Added button to start game,text view and option to choose between players
 /**
  * Created by emad on 13/03/16.
  */
 public class TicTacToe {
+<<<<<<< HEAD
 	   private char mBoard[];
 
         private static final int Board_size=9;
@@ -132,44 +136,36 @@ public class TicTacToe {
 
             }
             // for diagonals
-            //right diagonal
-             for (int i=0;; ) {
-                if (mBoard[i] == H_Player &&
-                        mBoard[i+4] == H_Player &&
-                        mBoard[i+8] == H_Player ) {
+          // for human player
+            if ((mBoard[0] == H_Player &&
+                    mBoard[4] == H_Player &&
+                    mBoard[8] == H_Player)||
+                    (mBoard[2] == H_Player &&
+                            mBoard[4] == H_Player &&
+                      mBoard[6] == H_Player)) {
                     return 2;
                 }
-                if (mBoard[i] == A_Player &&
-                        mBoard[i+4] == A_Player &&
-                        mBoard[i+8] == A_Player) {
+           // for computer player
+            if ((mBoard[0] == A_Player &&
+                    mBoard[4] == A_Player &&
+                    mBoard[8] == A_Player ) ||
+                    (mBoard[2] == A_Player &&
+                      mBoard[4] == A_Player &&
+                     mBoard[6] == A_Player )) {
                     return 3;
                 }
 
-            }
-             //left diagonal
-             for (int i=2;; ) {
-                if (mBoard[i] == H_Player &&
-                        mBoard[i+2] == H_Player &&
-                        mBoard[i+2] == H_Player ) {
-                    return 2;
-                }
-                if (mBoard[i] == A_Player &&
-                        mBoard[i+2] == A_Player &&
-                        mBoard[i+2] == A_Player) {
-                    return 3;
-                }
-
-            }
-           
             // for tie
             for (int i=0;i< getBoard_size();i++){
 
-                if(mBoard[i] != H_Player && mBoard[i] != A_Player && mBoard[i] != Empty_space){
+                if(getAvailableStates().isEmpty()){
                     return  1;
                 }
             }
 
             return 0;
         }
+=======
         
+>>>>>>> 2de25a7... Added button to start game,text view and option to choose between players
 }
