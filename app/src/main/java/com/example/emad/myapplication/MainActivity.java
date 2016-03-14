@@ -56,9 +56,27 @@ public class MainActivity extends AppCompatActivity {
 
         tgame = new TicTacToe();
     }
+     //sets 
+     private void setMove(char player, int location) {
+        tgame.setMove(player, location);
+        tboardButtons[location].setEnabled(false);
+        tboardButtons[location].setText(String.valueOf(player));
+        if (player == tgame.H_Player) {
+            tboardButtons[location].setTextColor(Color.GREEN);
+        } else {
+            tboardButtons[location].setTextColor(Color.RED);
+
+        }
+
+    }
+     //computes minimax first and gets the computermove from it.
+      private void getComputerMove() {
+        tgame.minimax(0, tgame.A_Player);
+        setMove(tgame.A_Player, tgame.computersMove);
+    }
 
 
-       
+      //checks which player will play first. 
      public void onRadioButtonClicked(View view) {
         // Is the button now checked?
         boolean checked = ((RadioButton) view).isChecked();
@@ -78,6 +96,48 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
     }
+
+      private class ButtonClickListener implements View.OnClickListener {
+        int location;
+
+        public ButtonClickListener(int location) {
+            this.location = location;
+        }
+
+        public void onClick(View view) {
+            if (!tGameOver) {
+                if (tboardButtons[location].isEnabled()) {
+                    setMove(tgame.H_Player, location);
+                    int winner = tgame.checkforwinner();
+                    if (winner == 0) {
+                        InfoTextView.setText(R.string.turn_computer);
+                        //int move = tgame.getComputerMove();
+                        //setmove(Android_player, move);
+                        getComputerMove();
+                        winner = tgame.checkforwinner();
+                    }
+                    if (winner == 0) {
+                        InfoTextView.setText(R.string.human_first);
+                    } else if (winner == 1) {
+                        InfoTextView.setText(R.string.result_tie);
+
+                        tGameOver = true;
+                    } else if (winner == 2) {
+                        InfoTextView.setText(R.string.result_human_wins);
+
+                        tGameOver = true;
+                    } else {
+                        InfoTextView.setText(R.string.result_computer_wins);
+
+                        tGameOver = true;
+                    }
+
+                }
+            }
+        }
+    }
+}
+
 
 
   
