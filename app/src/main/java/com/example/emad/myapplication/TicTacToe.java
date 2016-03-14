@@ -50,6 +50,53 @@ public class TicTacToe {
             }
             return availableTiles;
         }
+         int computersMove;
+        public int minimax(int depth,char player) {
+            // Base case, check for end state
+            int rv = checkforwinner();
+            if (rv == 3) {
+                return +1;
+            }
+            if (rv == 2) {
+                return -1;
+            }
+
+            List<Integer> availableTiles = getAvailableStates();
+            if (availableTiles.isEmpty()) return 0;
+
+            int min = Integer.MAX_VALUE, max = Integer.MIN_VALUE;
+            for (int i = 0; i < availableTiles.size(); ++i) {
+                int tile = availableTiles.get(i);
+
+                if (player == A_Player) {
+                    setMove(A_Player, tile);
+                    int currentScore = minimax(depth + 1, H_Player);
+                    max = Math.max(currentScore, max);
+                    //if(depth==0)
+                    if (currentScore >= 0) {
+                        if (depth == 0) computersMove = tile;
+                    }
+                    if (currentScore == 1) {
+                        mBoard[tile] = Empty_space;
+                        break;
+                    }
+                    if (i == availableTiles.size() - 1 && max < 0) {
+                        if (depth == 0) computersMove = tile;
+                    }
+                } else if (player == H_Player) {
+                    setMove(H_Player, tile);
+                    int currentScore = minimax(depth + 1, A_Player);
+                    min = Math.min(currentScore, min);
+                    if (min == -1) {
+                        mBoard[tile] = Empty_space;
+                        break;
+                    }
+                }
+                mBoard[tile] = Empty_space; //Reset this point
+
+            }
+            return player == A_Player ? max : min;
+        }
 
 
 
