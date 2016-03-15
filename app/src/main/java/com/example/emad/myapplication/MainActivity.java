@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
         tgame = new TicTacToe();
     }
-     //sets 
+     //sets the position of player on board
      private void setMove(char player, int location) {
         tgame.setMove(player, location);
         tboardButtons[location].setEnabled(false);
@@ -104,6 +104,29 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+     public void startNewGame(View view) {
+        tgame.clearBoard();
+
+        for (int i = 0; i < tboardButtons.length; i++) {
+
+            tboardButtons[i].setText(" ");
+            tboardButtons[i].setEnabled(true);
+            tboardButtons[i].setOnClickListener(new ButtonClickListener(i));
+
+        }
+
+      if (humanFirst) {
+            InfoTextView.setText(R.string.human_first);
+           // humanFirst = false;
+        } else if(compFirst) {
+                InfoTextView.setText(R.string.turn_computer);
+                getComputerMove();
+
+            }
+        else
+            InfoTextView.setText(R.string.play);
+    }
+
       private class ButtonClickListener implements View.OnClickListener {
         int location;
 
@@ -118,8 +141,7 @@ public class MainActivity extends AppCompatActivity {
                     int winner = tgame.checkforwinner();
                     if (winner == 0) {
                         InfoTextView.setText(R.string.turn_computer);
-                        //int move = tgame.getComputerMove();
-                        //setmove(Android_player, move);
+                        
                         getComputerMove();
                         winner = tgame.checkforwinner();
                     }
