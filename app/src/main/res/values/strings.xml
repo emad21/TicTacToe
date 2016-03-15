@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">My Application</string>
     <string name="action_settings">Settings</string>
-    
+    <string name="human_first">Human Turn</string>
+    <string name="turn_computer">Computer Turn</string>
+    <string name="result_tie">Its a tie game!</string>
+    <string name="result_human_wins">Human Wins!</string>
+    <string name="result_computer_wins">Computer Wins!</string>
+    <string name="play">Select the first player</string>
 
 </resources>
