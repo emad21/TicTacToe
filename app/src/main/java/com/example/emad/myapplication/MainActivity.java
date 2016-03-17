@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
         InfoTextView = (TextView) findViewById(R.id.tv1);
 
-        tgame = new TicTacToe();
+        tgame = new TicTacToe(); //initialize the game class
     }
      //sets the position of player on board
      private void setMove(char player, int location) {
@@ -104,10 +104,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-     public void startNewGame(View view) {
-        tgame.clearBoard();
+     public void startNewGame(View view) {  //works when user clicks the startNewGame button
+        tgame.clearBoard();     //clears the game board in java class
 
-        for (int i = 0; i < tboardButtons.length; i++) {
+        for (int i = 0; i < tboardButtons.length; i++) { 
+        //clears the buttons that are displayed at interface
 
             tboardButtons[i].setText(" ");
             tboardButtons[i].setEnabled(true);
@@ -126,10 +127,10 @@ public class MainActivity extends AppCompatActivity {
         else
             InfoTextView.setText(R.string.play);
     }
-
+     //when any button is clicked
       private class ButtonClickListener implements View.OnClickListener {
         int location;
-
+          //gets the position of that button
         public ButtonClickListener(int location) {
             this.location = location;
         }
